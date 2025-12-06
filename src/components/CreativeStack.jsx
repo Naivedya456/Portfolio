@@ -1,5 +1,4 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 
 const logos = [
     { name: 'Flutter', slug: 'flutter', color: '#02569B' },

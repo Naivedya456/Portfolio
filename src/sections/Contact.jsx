@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 import { Mail, Linkedin, Github, Send, Phone, MapPin, Loader2, CheckCircle, AlertCircle } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 
@@ -53,7 +53,7 @@ ${formData.message}
             templateParams,
             import.meta.env.VITE_EMAILJS_PUBLIC_KEY
         )
-            .then((result) => {
+            .then(() => {
                 setIsSending(false);
                 setStatus('success');
                 setFormData({ name: '', email: '', phone: '', message: '' });

@@ -23,7 +23,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-dark text-light overflow-hidden">
+    <div className={`min-h-screen bg-dark text-light ${!entered ? 'overflow-hidden' : ''}`}>
       {!entered ? (
         <Landing onEnter={handleEnter} />
       ) : (

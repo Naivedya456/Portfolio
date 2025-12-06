@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Code, PenTool, Cpu, Globe, Layers, Zap } from 'lucide-react';
+import { Code, PenTool, Cpu, Globe, Layers, Zap, Cloud } from 'lucide-react';
 
 const Skills = ({ viewMode }) => {
     // Visual Mode: Generative Services

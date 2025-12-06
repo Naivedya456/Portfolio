@@ -1,0 +1,170 @@
+
+> portfolio-site@0.0.0 lint
+> eslint .
+
+
+E:\Website\Portfolio\src\components\AutoScrollCarousel.jsx
+   2:10  error    'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            no-unused-vars
+  10:12  error    'isDragging' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               no-unused-vars
+  23:13  error    Error: Cannot access variable before it is declared
+
+`startAnimation` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+  21 |
+  22 |             // Start the animation
+> 23 |             startAnimation(totalWidth);
+     |             ^^^^^^^^^^^^^^ `startAnimation` accessed before it is declared
+  24 |         }
+  25 |     }, [items]);
+  26 |
+
+  25 |     }, [items]);
+  26 |
+> 27 |     const startAnimation = (totalWidth) => {
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 28 |         controls.start({
+     | ^^^^^^^^^^^^^^^^^^^^^^^^
+> 29 |             x: -totalWidth,
+     ΓÇª
+     | ^^^^^^^^^^^^^^^^^^^^^^^^
+> 37 |         });
+     | ^^^^^^^^^^^^^^^^^^^^^^^^
+> 38 |     };
+     | ^^^^^^^ `startAnimation` is declared here
+  39 |
+  40 |     const handleDragEnd = () => {
+  41 |         setIsDragging(false);  react-hooks/immutability
+  25:8   warning  React Hook useEffect has a missing dependency: 'startAnimation'. Either include it or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        react-hooks/exhaustive-deps
+
+E:\Website\Portfolio\src\components\CreativeStack.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+E:\Website\Portfolio\src\components\ImpactStats.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u        no-unused-vars
+  2:18  error  'useScroll' is defined but never used. Allowed unused vars must match /^[A-Z_]/u     no-unused-vars
+  2:29  error  'useTransform' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+E:\Website\Portfolio\src\components\Navbar.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+  5:19  error  'viewMode' is defined but never used                                           no-unused-vars
+
+E:\Website\Portfolio\src\components\ProjectCard.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+E:\Website\Portfolio\src\components\TechnicalNavbar.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+E:\Website\Portfolio\src\components\WorkGallery.jsx
+  3:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+E:\Website\Portfolio\src\components\Workflow.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+E:\Website\Portfolio\src\layouts\Dashboard.jsx
+  22:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+E:\Website\Portfolio\src\sections\About.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+E:\Website\Portfolio\src\sections\Contact.jsx
+   2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+  56:20  error  'result' is defined but never used                                             no-unused-vars
+
+E:\Website\Portfolio\src\sections\EnhancedDashboardSections.jsx
+  29:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+E:\Website\Portfolio\src\sections\Hero.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+E:\Website\Portfolio\src\sections\Landing.jsx
+    2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      no-unused-vars
+   52:13  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+  50 |             }, 50);
+  51 |         } else {
+> 52 |             setMatrixText('');
+     |             ^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  53 |         }
+  54 |         return () => clearInterval(interval);
+  55 |     }, [hoveredSide, isMobile]);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      react-hooks/set-state-in-effect
+  134:22  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  132 |                 {/* Left Overlay: Black Text (Default), Clipped to Left 50% */}
+  133 |                 <div className="absolute inset-0 z-50 pointer-events-none hidden md:block" style={{ clipPath: 'inset(0:50% 0 0)' }}>
+> 134 |                     <OverlayContent
+      |                      ^^^^^^^^^^^^^^ This component is created during render
+  135 |                         titleClass={hoveredSide === 'right' ? 'text-gray-100' : 'text-black'}
+  136 |                         subtitleClass={hoveredSide === 'right' ? 'text-gray-300' : 'text-gray-600'}
+  137 |                         quoteClass={hoveredSide === 'right' ? 'text-gray-300' : 'text-gray-800'}
+
+  57 |
+  58 |     // Shared Component for Header and Quote with explicit color control
+> 59 |     const OverlayContent = ({ titleClass, subtitleClass, quoteClass }) => (
+     |                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 60 |         <div className="h-full w-full flex flex-col justify-between py-8 pointer-events-none">
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 61 |             {/* Header */}
+     ΓÇª
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 85 |         </div>
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 86 |     );
+     | ^^^^^^ The component is created during render here
+  87 |
+  88 |     return (
+  89 |         <div className="w-full bg-neutral-900 relative">  react-hooks/static-components
+  143:22  error  Error: Cannot create components during render
+
+Components created during render will reset their state each time they are created. Declare components outside of render.
+
+  141 |                 {/* Right Overlay: White Text, Clipped to Right 50% */}
+  142 |                 <div className="absolute inset-0 z-50 pointer-events-none hidden md:block" style={{ clipPath: 'inset(0:0 0 50%)' }}>
+> 143 |                     <OverlayContent
+      |                      ^^^^^^^^^^^^^^ This component is created during render
+  144 |                         titleClass={hoveredSide === 'left' ? 'text-white/40' : 'text-white'}
+  145 |                         subtitleClass={hoveredSide === 'left' ? 'text-white/40' : 'text-gray-300'}
+  146 |                         quoteClass={hoveredSide === 'left' ? 'text-white/40' : 'text-gray-300'}
+
+  57 |
+  58 |     // Shared Component for Header and Quote with explicit color control
+> 59 |     const OverlayContent = ({ titleClass, subtitleClass, quoteClass }) => (
+     |                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 60 |         <div className="h-full w-full flex flex-col justify-between py-8 pointer-events-none">
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 61 |             {/* Header */}
+     ΓÇª
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 85 |         </div>
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 86 |     );
+     | ^^^^^^ The component is created during render here
+  87 |
+  88 |     return (
+  89 |         <div className="w-full bg-neutral-900 relative">             react-hooks/static-components
+
+E:\Website\Portfolio\src\sections\Skills.jsx
+   2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+  70:19  error  'Cloud' is not defined                                                         no-undef
+
+E:\Website\Portfolio\src\sections\TechnicalBlueprints.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+E:\Website\Portfolio\src\sections\TechnicalHero.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+E:\Website\Portfolio\src\sections\TechnicalProjects.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+E:\Website\Portfolio\src\sections\TechnicalTerminal.jsx
+  2:10  error  'motion' is defined but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars
+
+Γ£û 30 problems (29 errors, 1 warning)
+

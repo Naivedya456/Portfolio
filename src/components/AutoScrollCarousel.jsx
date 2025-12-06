@@ -7,22 +7,11 @@ const AutoScrollCarousel = ({ items, renderItem, speed = 20, className = "" }) =
     const controls = useAnimation();
     const x = useMotionValue(0);
     const [isHovered, setIsHovered] = useState(false);
-    const [isDragging, setIsDragging] = useState(false);
 
     // Duplicate items to ensure seamless looping
     // We need enough duplicates to fill the screen width + buffer
     // For simplicity, we'll triple the items to guarantee coverage
     const duplicatedItems = [...items, ...items, ...items];
-
-    useEffect(() => {
-        if (containerRef.current) {
-            const totalWidth = containerRef.current.scrollWidth / 3; // Width of one set
-            setWidth(totalWidth);
-
-            // Start the animation
-            startAnimation(totalWidth);
-        }
-    }, [items]);
 
     const startAnimation = (totalWidth) => {
         controls.start({
@@ -37,8 +26,18 @@ const AutoScrollCarousel = ({ items, renderItem, speed = 20, className = "" }) =
         });
     };
 
+    useEffect(() => {
+        if (containerRef.current) {
+            const totalWidth = containerRef.current.scrollWidth / 3; // Width of one set
+            setWidth(totalWidth);
+
+            // Start the animation
+            startAnimation(totalWidth);
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [items]);
+
     const handleDragEnd = () => {
-        setIsDragging(false);
         // Resume animation after drag
         // Note: Seamless resumption from drag position is complex in pure Framer Motion
         // We'll restart for simplicity in this custom implementation, 
@@ -86,7 +85,7 @@ const AutoScrollCarousel = ({ items, renderItem, speed = 20, className = "" }) =
                 style={{ x }}
                 drag="x"
                 dragConstraints={{ left: -width * 2, right: 0 }}
-                onDragStart={() => { setIsDragging(true); controls.stop(); }}
+                onDragStart={() => { controls.stop(); }}
                 onDragEnd={handleDragEnd}
             >
                 {duplicatedItems.map((item, index) => (

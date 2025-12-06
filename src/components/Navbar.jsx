@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Settings } from 'lucide-react';
 
-const Navbar = ({ viewMode, setViewMode, onOpenAbout }) => {
+const Navbar = ({ setViewMode, onOpenAbout }) => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
 

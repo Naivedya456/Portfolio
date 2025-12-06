@@ -3,6 +3,36 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Contact from './Contact';
 import { MoveDown, MoveUp } from 'lucide-react';
 
+// Shared Component for Header and Quote with explicit color control
+const OverlayContent = ({ titleClass, subtitleClass, quoteClass }) => (
+    <div className="h-full w-full flex flex-col justify-between py-8 pointer-events-none">
+        {/* Header */}
+        <div className="flex flex-col items-center z-50">
+            <h2 className={`text-2xl md:text-4xl font-bold tracking-widest uppercase transition-colors duration-500 font-serif italic ${titleClass}`}>
+                Naibedya Bhuyan
+            </h2>
+            <p className={`text-[10px] md:text-xs tracking-[0.5em] mt-2 font-medium transition-colors duration-500 ${subtitleClass}`}>
+                PORTFOLIO
+            </p>
+        </div>
+
+        {/* Quote */}
+        <div className="flex justify-center px-6 z-50">
+            <div className={`max-w-3xl text-center transition-colors duration-500 ${quoteClass}`}>
+                <p className="text-[10px] md:text-sm italic leading-relaxed font-serif opacity-90 hidden md:block">
+                    "If you really want to hear about it, the first thing you’ll probably want to know is where I was born, and what my lousy childhood was like, and how my parents were occupied and all before they had me, and all that David Copperfield kind of crap, but I don’t feel like going into it, if you want to know the truth."
+                </p>
+                <p className="text-[10px] md:text-sm italic leading-relaxed font-serif opacity-90 md:hidden block">
+                    "If you really want to hear about it... I don't feel like going into it."
+                </p>
+                <p className="text-[8px] md:text-[10px] mt-2 uppercase tracking-widest font-bold opacity-70">
+                    — The Catcher in the Rye
+                </p>
+            </div>
+        </div>
+    </div>
+);
+
 const Landing = ({ onEnter }) => {
     const [hoveredSide, setHoveredSide] = useState(null); // 'left' | 'right' | null
     const [matrixText, setMatrixText] = useState('');
@@ -55,35 +85,7 @@ const Landing = ({ onEnter }) => {
     }, [hoveredSide, isMobile]);
 
 
-    // Shared Component for Header and Quote with explicit color control
-    const OverlayContent = ({ titleClass, subtitleClass, quoteClass }) => (
-        <div className="h-full w-full flex flex-col justify-between py-8 pointer-events-none">
-            {/* Header */}
-            <div className="flex flex-col items-center z-50">
-                <h2 className={`text-2xl md:text-4xl font-bold tracking-widest uppercase transition-colors duration-500 font-serif italic ${titleClass}`}>
-                    Naibedya Bhuyan
-                </h2>
-                <p className={`text-[10px] md:text-xs tracking-[0.5em] mt-2 font-medium transition-colors duration-500 ${subtitleClass}`}>
-                    PORTFOLIO
-                </p>
-            </div>
 
-            {/* Quote */}
-            <div className="flex justify-center px-6 z-50">
-                <div className={`max-w-3xl text-center transition-colors duration-500 ${quoteClass}`}>
-                    <p className="text-[10px] md:text-sm italic leading-relaxed font-serif opacity-90 hidden md:block">
-                        "If you really want to hear about it, the first thing you’ll probably want to know is where I was born, and what my lousy childhood was like, and how my parents were occupied and all before they had me, and all that David Copperfield kind of crap, but I don’t feel like going into it, if you want to know the truth."
-                    </p>
-                    <p className="text-[10px] md:text-sm italic leading-relaxed font-serif opacity-90 md:hidden block">
-                        "If you really want to hear about it... I don't feel like going into it."
-                    </p>
-                    <p className="text-[8px] md:text-[10px] mt-2 uppercase tracking-widest font-bold opacity-70">
-                        — The Catcher in the Rye
-                    </p>
-                </div>
-            </div>
-        </div>
-    );
 
     return (
         <div className="w-full bg-neutral-900 relative">

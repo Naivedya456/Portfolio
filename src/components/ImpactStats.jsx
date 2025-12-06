@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 const stats = [
     { value: '95%', label: 'User Satisfaction Score', source: 'Jindal Innovation Centre' },
