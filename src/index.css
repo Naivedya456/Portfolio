@@ -1,0 +1,198 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DotGothic16&family=Fira+Code:wght@300..700&family=Ubuntu:wght@400;500;700&family=Ubuntu+Mono:wght@400;700&family=Righteous&family=Josefin+Sans:wght@300;400;600&display=swap');
+
+@theme {
+  --color-primary: #3b82f6;
+  --color-secondary: #10b981;
+  --color-dark: #1f2937;
+  --color-light: #f3f4f6;
+
+  /* Visual Mode Fonts */
+  --font-sans: "Josefin Sans", sans-serif;
+  --font-display: "Righteous", cursive;
+
+  /* Engineering Mode Fonts */
+  --font-tech: "Ubuntu", sans-serif;
+  --font-mono: "Ubuntu Mono", monospace;
+
+  /* Legacy/Accents */
+  --font-serif: "Instrument Serif", serif;
+  --font-dot: "DotGothic16", sans-serif;
+}
+
+
+@layer base {
+  body {
+    @apply bg-dark text-light font-sans;
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes marquee2 {
+  0% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+}
+
+.animate-marquee2 {
+  animation: marquee2 40s linear infinite;
+}
+
+/* Engineering Mode Animations */
+@keyframes blink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes scanline {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+.scanline::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(to bottom, rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  z-index: 2;
+  background-size: 100% 2px, 3px 100%;
+  pointer-events: none;
+}
+
+.scanline::after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(18, 16, 16, 0.1);
+  opacity: 0;
+  z-index: 2;
+  pointer-events: none;
+  animation: flicker 0.15s infinite;
+}
+
+@keyframes flicker {
+  0% {
+    opacity: 0.02795172;
+  }
+
+  5% {
+    opacity: 0.04828732;
+  }
+
+  10% {
+    opacity: 0.01270852;
+  }
+
+  15% {
+    opacity: 0.08802615;
+  }
+
+  20% {
+    opacity: 0.04081373;
+  }
+
+  25% {
+    opacity: 0.08196215;
+  }
+
+  30% {
+    opacity: 0.04189123;
+  }
+
+  35% {
+    opacity: 0.05698032;
+  }
+
+  40% {
+    opacity: 0.02625782;
+  }
+
+  45% {
+    opacity: 0.03660517;
+  }
+
+  50% {
+    opacity: 0.06723844;
+  }
+
+  55% {
+    opacity: 0.09479437;
+  }
+
+  60% {
+    opacity: 0.05793838;
+  }
+
+  65% {
+    opacity: 0.05486295;
+  }
+
+  70% {
+    opacity: 0.06750315;
+  }
+
+  75% {
+    opacity: 0.03034109;
+  }
+
+  80% {
+    opacity: 0.07119581;
+  }
+
+  85% {
+    opacity: 0.09941373;
+  }
+
+  90% {
+    opacity: 0.05513805;
+  }
+
+  95% {
+    opacity: 0.01887743;
+  }
+
+  100% {
+    opacity: 0.09933992;
+  }
+}
